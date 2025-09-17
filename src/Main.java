@@ -3,13 +3,17 @@ import java.util.Scanner;
 /**
  * Proyecto: SistemaPasajes
  * Autor: Hugo Israel Láinez Medina
- * DNI: 2400396574
+ * ID: 2400396574
  * Fecha de creación: domingo, 14 de septiembre de 2025
- * Última modificación: lunes, 15 de septiembre de 2025
  */
 
 public class Main {
     public static void main(String[] args) {
+
+        // Llama al controlador
+        Controlador controlador = new Controlador();
+
+        controlador.busesPorDefecto(); // Agrega buses por defecto
 
         Scanner sn = new Scanner(System.in); // Escribir en consola
         boolean salir = false; // Opcion salir
@@ -31,13 +35,16 @@ public class Main {
 
             System.out.print("Escribe una de las opciones:     ");
             opcion = sn.nextInt(); // Guarda la opcion
+            sn.nextLine(); // Salto de linea
 
             System.out.println("---------------------------------------------------------");
 
             // Manejar opciones
             switch (opcion) {
                 case 1:
-                    System.out.println("Registrar bus");
+                    //System.out.println("Registrar bus");
+                    controlador.agregarBus();
+                    // controlador.verBuses();
                     break;
 
                 case 2:
@@ -58,6 +65,7 @@ public class Main {
 
                 case 0:
                     // Finaliza el programa
+                    System.out.println("---------------------------------------------------------");
                     System.out.println("Saliendo... ¡Gracias por elegirnos!");
                     System.out.println("---------------------------------------------------------");
 
@@ -73,5 +81,6 @@ public class Main {
 
         } while (!salir);
 
+        sn.close();
     }
 }
